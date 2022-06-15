@@ -13,4 +13,7 @@
     <SourceRoot Include="/Users/irzakamran/.nuget/packages/" />
     <SourceRoot Include="/usr/local/share/dotnet/sdk/NuGetFallbackFolder/" />
   </ItemGroup>
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)mstest.testadapter/2.2.10/build/net5.0/MSTest.TestAdapter.props" Condition="Exists('$(NuGetPackageRoot)mstest.testadapter/2.2.10/build/net5.0/MSTest.TestAdapter.props')" />
+  </ImportGroup>
 </Project>

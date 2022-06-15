@@ -18,3 +18,10 @@
 /Users/irzakamran/Desktop/ST Project/FirstTest/obj/Debug/net6.0/ref/FirstTest.dll
 /Users/irzakamran/Desktop/ST Project/FirstTest/bin/Debug/net6.0/WebDriver.Support.dll
 /Users/irzakamran/Desktop/ST Project/FirstTest/bin/Debug/net6.0/nunit.framework.dll
+/Users/irzakamran/Desktop/ST Project/FirstTest/bin/Debug/net6.0/Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+/Users/irzakamran/Desktop/ST Project/FirstTest/bin/Debug/net6.0/Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+/Users/irzakamran/Desktop/ST Project/FirstTest/bin/Debug/net6.0/Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+/Users/irzakamran/Desktop/ST Project/FirstTest/bin/Debug/net6.0/Microsoft.TestPlatform.AdapterUtilities.dll
+/Users/irzakamran/Desktop/ST Project/FirstTest/bin/Debug/net6.0/Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+/Users/irzakamran/Desktop/ST Project/FirstTest/bin/Debug/net6.0/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+/Users/irzakamran/Desktop/ST Project/FirstTest/bin/Debug/net6.0/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml

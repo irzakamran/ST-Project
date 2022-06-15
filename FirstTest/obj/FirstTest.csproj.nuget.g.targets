@@ -2,5 +2,7 @@
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)selenium.webdriver.chromedriver/102.0.5005.6102/build/Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('$(NuGetPackageRoot)selenium.webdriver.chromedriver/102.0.5005.6102/build/Selenium.WebDriver.ChromeDriver.targets')" />
+    <Import Project="$(NuGetPackageRoot)mstest.testframework/2.2.10/build/net5.0/MSTest.TestFramework.targets" Condition="Exists('$(NuGetPackageRoot)mstest.testframework/2.2.10/build/net5.0/MSTest.TestFramework.targets')" />
+    <Import Project="$(NuGetPackageRoot)mstest.testadapter/2.2.10/build/net5.0/MSTest.TestAdapter.targets" Condition="Exists('$(NuGetPackageRoot)mstest.testadapter/2.2.10/build/net5.0/MSTest.TestAdapter.targets')" />
   </ImportGroup>
 </Project>
