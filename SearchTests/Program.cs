@@ -15,10 +15,6 @@ namespace SearchTests
             basePageClass.SeleniumInit();
             driver.Url = "https://www.amazon.com";
             driver.Manage().Window.Maximize();
-            String validEmail = "k181097@nu.edu.pk";
-		    String validPassword = "zr,4zwq-VvGG!97";
-
-            homePage.logInSuccessFullTest(validEmail, validPassword);
 
             var searchTerma = "iPhone 13";
             homePage.searchByNameSuccessful(searchTerm);
@@ -29,17 +25,6 @@ namespace SearchTests
 
 [TestClass]
 public class AmazonHomePage : BasePageClass  {
-    [TestMethod]
-    public void logInSuccessFullTest(string email, string password){
-        By goToSignInPage = By.XPath("//*[@id=\"nav-link-accountList\"]");
-        driver.FindElement(goToSignInPage).Click();
-        SignInPage signInPage = new SignInPage();
-        signInPage.signIn(email, password);
-        Console.WriteLine("logged in");
-        Assert.IsTrue(driver.Url.Contains("ref_=nav_ya_signin&"));
-        Console.WriteLine("after assertion");
-    }
-
     [TestMethod]
     public void searchByNameSuccessful (string searchTerm) {
         IWebElement searchBox = driver.FindElement(By.Id("twotabsearchtextbox"));
@@ -60,18 +45,7 @@ public class AmazonHomePage : BasePageClass  {
 
 }
 
-public class SignInPage : BasePageClass {
-    public void signIn(string email, string password){
-        By emailTextBox = By.Id("ap_email");
-        By continueButton = By.Id("continue");
-        By passwordTextBox = By.Id("ap_password"); 
-        By signInButton = By.Id("signInSubmit");
-        driver.FindElement(By.Id("ap_email")).SendKeys(email);     
-        driver.FindElement(continueButton).Click();
-        driver.FindElement(passwordTextBox).SendKeys(password);       
-        driver.FindElement(signInButton).Click();
-    }
-}
+
 public class SearchPage : BasePageClass{
     public void selectItemFromList (string XPath) {
         driver.FindElement(By.XPath(XPath)).Click();
