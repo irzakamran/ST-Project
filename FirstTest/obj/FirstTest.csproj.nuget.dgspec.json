@@ -41,6 +41,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "ConcurrentUtils": {
+              "target": "Package",
+              "version": "[1.0.1, )"
+            },
             "MSTest.TestAdapter": {
               "target": "Package",
               "version": "[2.2.10, )"

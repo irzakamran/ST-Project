@@ -2,6 +2,22 @@
   "version": 3,
   "targets": {
     "net6.0": {
+      "ConcurrentUtils/1.0.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Collections.Concurrent": "4.0.12",
+          "System.Linq": "4.1.0",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "lib/netstandard1.6/ConcurrentUtils.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/ConcurrentUtils.dll": {}
+        }
+      },
       "Microsoft.NETCore.Platforms/1.1.0": {
         "type": "package",
         "compile": {
@@ -1203,6 +1219,21 @@
     }
   },
   "libraries": {
+    "ConcurrentUtils/1.0.1": {
+      "sha512": "8cqEBxD1mNvhWZHf3vvklajMIWd2/dlOFWS5TJL5Deb9PIM3V1H0gQR1KZXutwK+yZex9RBBC47sqYees5nrXw==",
+      "type": "package",
+      "path": "concurrentutils/1.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "concurrentutils.1.0.1.nupkg.sha512",
+        "concurrentutils.nuspec",
+        "lib/net452/ConcurrentUtils.dll",
+        "lib/net452/ConcurrentUtils.xml",
+        "lib/netstandard1.6/ConcurrentUtils.dll",
+        "lib/netstandard1.6/ConcurrentUtils.xml"
+      ]
+    },
     "Microsoft.NETCore.Platforms/1.1.0": {
       "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
       "type": "package",
@@ -4769,6 +4800,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "ConcurrentUtils >= 1.0.1",
       "MSTest.TestAdapter >= 2.2.10",
       "MSTest.TestFramework >= 2.2.10",
       "NUnit >= 3.6.0",
@@ -4818,6 +4850,10 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "ConcurrentUtils": {
+            "target": "Package",
+            "version": "[1.0.1, )"
+          },
           "MSTest.TestAdapter": {
             "target": "Package",
             "version": "[2.2.10, )"

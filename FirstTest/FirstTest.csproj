@@ -12,5 +12,6 @@
     <PackageReference Include="NUnit" Version="3.6.0"/>
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.10"/>
     <PackageReference Include="MSTest.TestFramework" Version="2.2.10"/>
+    <PackageReference Include="ConcurrentUtils" Version="1.0.1"/>
   </ItemGroup>
 </Project>
