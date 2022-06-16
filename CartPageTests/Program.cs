@@ -2,8 +2,8 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-// using NUnit.Framework;
-namespace ST_Proj_Selenium
+using System.Text.RegularExpressions;
+namespace SignInTests
 {
     [TestClass]
     class AmazonTest : BasePageClass {
@@ -13,6 +13,7 @@ namespace ST_Proj_Selenium
             AmazonHomePage homePage = new AmazonHomePage();
             SearchPage searchPage = new SearchPage();
             ProductPage productPage = new ProductPage();
+            CartPage cartPage = new CartPage();
             basePageClass.SeleniumInit();
             driver.Url = "https://www.amazon.com";
             driver.Manage().Window.Maximize();
@@ -21,21 +22,19 @@ namespace ST_Proj_Selenium
 		    String validPassword = "zr,4zwq-VvGG!97";
 		    String invalidPassword = "1234567890";
 
-            homePage.logIn(validEmail, validPassword);
-            homePage.logInWithInvalidPassword(validEmail, invalidPassword);
-            homePage.logInWithInvalidEmail(invalidEmail, validPassword);
-            homePage.logInWithInvalidEmailAndPassword(invalidEmail, invalidPassword);
-
+            homePage.logInSuccessFullTest(validEmail, validPassword);
             var searchTerm = "iPhone 13";
             homePage.searchByName(searchTerm);
             searchPage.selectItemFromList("(//div[@class='sg-col-inner']//img[contains(@data-image-latency,'s-product-image')])[3]");
             productPage.addToCart();
-            driver.Navigate().Back();
-            driver.Navigate().Back();
-            searchPage.selectItemFromList("(//div[@class='sg-col-inner']//img[contains(@data-image-latency,'s-product-image')])[5]");
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(100);
 
-            productPage.addToCart();
+            cartPage.goToCart();
+            var qtyToSelect = "2";
+            cartPage.changeQtySuccess(qtyToSelect);
+            cartPage.deleteItem();
+            // cartPage.deleteItemUnsuccessful();
+            cartPage.goToCheckout();
+            
         }
 
     }
@@ -143,5 +142,46 @@ public class ProductPage : BasePageClass {
         catch {
             Assert.Fail();
         }
+    }
+}
+
+[TestClass]
+public class CartPage: BasePageClass {
+    public void goToCart() {
+        driver.FindElement(By.Id("nav-cart")).Click();
+    }
+
+    [TestMethod]
+    public void changeQtySuccess(string qtyToSelect) {
+            driver.FindElement(By.Id("a-autoid-0-announce")).Click();
+            driver.FindElement(By.Id("quantity_" + qtyToSelect)).Click();
+            Console.WriteLine("qty changed" + driver.FindElement(By.Id("quantity_" + qtyToSelect)).GetAttribute("value"));
+            // Assert.AreEqual(qtyToSelect, driver.FindElement(By.Id("quantity_" + qtyToSelect)).GetAttribute("value"));
+            Console.WriteLine(driver.FindElement(By.ClassName("a-dropdown-prompt")).Text);
+            Assert.AreEqual(qtyToSelect,driver.FindElement(By.ClassName("a-dropdown-prompt")).Text );
+    }
+    [TestMethod]
+    public void changeQtyUnsuccessful(string qtyToSelect) {
+            driver.FindElement(By.Id("a-autoid-0-announce")).Click();
+            driver.FindElement(By.Id("quantity_" + qtyToSelect)).Click();
+            Console.WriteLine("qty changed" + driver.FindElement(By.Id("quantity_" + qtyToSelect)).GetAttribute("value"));
+            Console.WriteLine(driver.FindElement(By.ClassName("a-dropdown-prompt")).Text);
+            Assert.AreNotEqual(qtyToSelect,driver.FindElement(By.ClassName("a-dropdown-prompt")).Text );
+    }
+    [TestMethod]
+    public void deleteItem() {
+            driver.FindElement(By.Name("submit.delete.Cb66a814d-cb6b-420c-82cc-1c771214ce93")).Click();
+            Assert.AreEqual("Your Amazon Cart is empty.", 
+            driver.FindElement(By.ClassName("a-spacing-mini a-spacing-top-base")).Text);
+    }
+    [TestMethod]
+    public void deleteItemUnsuccessful() {
+            driver.FindElement(By.Name("submit.delete.Cb66a814d-cb6b-420c-82cc-1c771214ce93")).Click();
+            Assert.AreEqual("Your Amazon Cart is empty.", 
+            driver.FindElement(By.ClassName("a-spacing-mini a-spacing-top-base")).Text);
+    }
+    [TestMethod]
+    public void goToCheckout() {
+            driver.FindElement(By.Name("proceedToRetailCheckout")).Click();
     }
 }
